@@ -444,31 +444,6 @@ grep -E 'A([aei]+)B(.*)C\2\1'  # lines containing strings such as:
 See "man grep" and search for "REGULAR EXPRESSIONS" for help on them
 
 
-HMWK: In the shell, is grep '[A-Za-z][A-Za-z]*' fname  the same as
-grep -i '[A-Z]*' fname ? Why or why not?
-Why do you think "\<" and "\>" are used instead of simply "<" and ">" for
-beginning/end of line?
-For questions 1-6 below, write a different shell program for each.
-1. list all lines in file fname containing the string "dog";
-2. list all lines in fname containing the word "dog";
-3. list all lines in fname containing the string "dog" at the beginning of
-   a line;
-4. list all lines in fname containing the word "dog" at the beginning of a line.
-5. list all lines in fname containing exactly 6 "a"s in a row.
-6. list all lines in fname containing one or more words that start with 93 and
-   end in a sequence of any number of W (not 0)
-7. Give 2 different grep commands that will list lines of fname that
-   end in a lower-case vowel.
-8. Use the man page to find the option of grep that shows the matched string
-   in a different color. Try it.
-9. How would you change your program for #1 above so that instead of doing grep
-   directly from the file, it cat`s the file, then pipes that to grep which
-   greps from stdin?
-10. Print the first 3 lines of AlanTuringBio80 that contain the string 'machine'
-   in any case. Use grep, pipe(s), and head.
-
-EOH 2
-
 
 << FIND  (LIST ALL FILES AND DIRS MEETING CERTAIN CRITERIA) >>
 
@@ -536,27 +511,6 @@ EOH 2
       /home/dwoit/testdir>
 
 
-HMWK:
-1. Use the "find" command to list all entries in directory /bin
-that start with the letter "m".
-2. What would happen if we did not put
-a name such as "*.jav" in quotes in the find command? Make sure you have
-some .jav files in your directory and try it out.
-3a. Look at the man pages for "find" to determine what the option
-"-mtime" does in the find command. Then...
-Figure out a sequence of commands (involving find, temporary files, and grep)
-to display those FILES in the current directory whose contents were
-changed within the last 24 hours and whose names contain the string "tst".
-3b. How would you do 3a using a pipe and no temporary files?
-4a. Make a shell program to do question 3a above. Call your program tstRecent
-Your program should delete any temporary files it creates.
-Test it to make sure your program works.
-4b. Rewrite your program from 4a to use pipes instead of temp files.
-5. Use the man pages to find out how find`s -maxdepth option works. Use
--maxdepth 1 to list all entries in the given directory only (not the whole
-filetree under it)
-
-
 
 << MORE ADVANCED HEAD, TAIL OPTIONS >>
 
@@ -582,9 +536,6 @@ option -n-X for head and -n+X for tail:
 
 (options are in man pages. Lots for tail. )
 
-HMWK:
-The following program displays, on stdout, line 6 of file
-/usr/courses/cps393/dwoit/courseNotes/vimSummary.txt:
 
 #!/bin/bash
 #program to print line 6 of vimSummary.txt
@@ -621,7 +572,6 @@ Aside:
    cat -A will show tabs, newlines, etc. (see man page)
 
 
-
 Some shell programs:
 
 #!/bin/bash
@@ -634,6 +584,10 @@ who | grep -w mes | cut -c1-8 | uniq #string in other userids
 exit 0
 #or who | grep -Ew "dwoit|eharley|mes" | cut -c1-8 | sort -u
 
+
+Try this: use any of ls, cut, sort, uniq, head, tail and pipes
+to get a listing of all the different GROUPS entries belong to
+in the current directory. List each group only once.
 
 
 #!/bin/bash
@@ -656,28 +610,3 @@ lynx -dump "https://en.wikipedia.org/wiki/Donald_Trump" 2>/dev/null | \
       grep "Trump.*born" | head -1
 echo ""
 exit 0
-
-
-
-HMWK: Use various commands and pipes to do the following (do not
-use any temp files):
-1. List, in long form, all those files in your home directory that have
-read, write and execute perms for you, and whose name contains the
-string "txt".
-2. Do the above question again, but list in short form
-(just the file names.)
-3. List any lines in the first 10 lines of a file, myf, that contain the
-word "dog". (you should create different versions of myf to test your
-commands.)
-4. Find all lines of file, myf, that contain all the words "cat", "dog"
-and "mouse", in any order, and start with the letter "A".
-5. List all the files in your home dir that contain the string "so"
-somewhere within them. Next, just list the *number* of files in your
-home dir that contain the string "so" (you should use, among other
-commands, the command "wc -l", word-count (lines option), which you
-should look up in the man pages.)
-6. Use only ls, grep, cut, pipes to answer this question. What sequence
-of pipes and commands could you issue from your home dir
-to list, in alphabetical order, the absolute path names of all the
-directories in your file system (if you NEED to, use the sort command.)
-7. List the names of any subdirectories of your home directory that have
